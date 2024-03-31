@@ -101,14 +101,23 @@ def show_end_screen(screen, game_over):
         pygame.display.flip()
 
 
-def show_win_screen(screen):
+def show_win_screen(screen, point):
     fon = pygame.transform.scale(load_image('win_screen.jpg'), (screen.get_size()))
     screen.blit(fon, (0, 0))
+    font = pygame.font.Font(None, 50)
+    score = font.render(f"Your score: {point}", True, (100, 255, 100))
+    text_x = screen.get_size()[0] // 2 - score.get_width() // 2
+    text_y = screen.get_size()[1] - 100
+    text_w = score.get_width()
+    text_h = score.get_height()
+    screen.blit(score, (text_x, text_y))
+    pygame.draw.rect(screen, (0, 255, 0), (text_x - 10, text_y - 10,
+                                           text_w + 20, text_h + 20), 1)
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pass
                 terminate()
+
         pygame.display.flip()
-
-

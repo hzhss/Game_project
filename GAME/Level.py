@@ -24,7 +24,6 @@ tile_images = {
     'earth_2_left': dop_function.load_image('earth_2_l.png'),
     'earth_dop': dop_function.load_image('earth_dop.png'),
     'earth_2': dop_function.load_image('earth_2(ver2).png'),
-    'earth': dop_function.load_image('earth.png'),
     'wall': dop_function.load_image('box.png')
 }
 
@@ -103,13 +102,11 @@ def generate_level(level):
 def Score(point, hp):
     font = pygame.font.Font(None, 50)
     score = font.render(f"Score: {point}", True, (100, 255, 100))
-    health_text = font.render(f"Hp: {hp}", True, (100, 255, 100))
-    text_x = width // 2 - score.get_width() // 2
-    text_y = 10
+    text_x = width - score.get_width() - 50
+    text_y = 50
     text_w = score.get_width()
     text_h = score.get_height()
     screen.blit(score, (text_x, text_y))
-    screen.blit(health_text, (20, 100))
     pygame.draw.rect(screen, (0, 255, 0), (text_x - 10, text_y - 10,
                                            text_w + 20, text_h + 20), 1)
     if len(Corgi.health) != hp:

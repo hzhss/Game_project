@@ -39,6 +39,7 @@ class Camera:
 
 
 if __name__ == '__main__':
+
     pygame.mixer.music.load('data/sounds/barradeen-boku-no-love.mp3')
     pygame.mixer.music.play(-1)
     corgi = Level.generate_level(Level.load_level('level1.txt'))
@@ -53,7 +54,6 @@ if __name__ == '__main__':
     camera = Camera()
     clock = pygame.time.Clock()
     count = 0
-
     # Цикл игры
     while running:
 
@@ -92,7 +92,7 @@ if __name__ == '__main__':
                 running = True
 
         if level_2_completed:
-            dop_function.show_win_screen(screen)
+            dop_function.show_win_screen(screen, corgi.point)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -148,10 +148,3 @@ if __name__ == '__main__':
         if not Level.star_group:
             level_completed = True
         pygame.display.flip()
-
-
-
-
-
-
-
